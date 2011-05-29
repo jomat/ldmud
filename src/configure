@@ -16694,7 +16694,7 @@ fi
 echo "$as_me:$LINENO: checking for broken iconv in glibc 2.0-2.2" >&5
 echo $ECHO_N "checking for broken iconv in glibc 2.0-2.2... $ECHO_C" >&6
 if test -f /usr/sbin/iconvconfig; then
-    if /usr/sbin/iconvconfig -V | egrep ' 2\.[0-2]' >/dev/null 2>&1; then
+    if /usr/sbin/iconvconfig -V | egrep ' 2\.[0-2]\.' >/dev/null 2>&1; then
         lp_cv_has_broken_iconv="yes"
         lp_cv_has_iconv="no"
     else
