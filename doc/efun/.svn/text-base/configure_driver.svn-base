@@ -1,0 +1,35 @@
+SYNOPSIS
+        #include <configuration.h>
+
+        void configure_driver(int what, mixed data)
+
+DESCRIPTION
+        Sets the option <what> to the value <data>.
+
+        This function always causes the privilege_violation
+        ("configure_driver", this_object(), what, data).
+
+        <what> == DC_MEMORY_LIMIT
+           Set new soft and hard memory limits for the driver.
+           <data> is expected to be an array with two elements, which have to
+           be integers giving the amount of memory in bytes.
+           ({<soft memory limit>, <hard memory limit>})
+        <what> == DC_ENABLE_HEART_BEATS
+           Globally enable the calling of Heartbeats, if <data> is 1,
+           globally disable them if <data> is 0.
+           If called during heartbeat processing, the change comes into effect
+           at the next backend cycle.
+        <what> == DC_LONG_EXEC_TIME
+           Set the time considered as (too) long for top-level executions. If
+           an execution exceeds this time, a stack trace will be written to
+           the debug log. The execution will continue at that point.
+           <data> is an integer and measured in microseconds.
+           A time of 0 disables the detection of long executions.
+
+HISTORY
+        Introduced in LDMud 3.3.719.
+        DC_ENABLE_HEART_BEATS was added in 3.5.0.
+        DC_LONG_EXEC_TIME was added in 3.5.0.
+
+SEE ALSO
+        configure_interactive(E)
