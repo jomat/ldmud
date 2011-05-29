@@ -1,7 +1,7 @@
 10
 
 dir
-3020
+3022
 svn://svn.bearnip.com/ldmud/trunk/doc/hook
 svn://svn.bearnip.com/ldmud
 
@@ -94,40 +94,6 @@ lars
 
 1352
 
-create_ob
-file
-
-
-
-
-2011-05-29T15:32:33.316191Z
-3afcc8b0751299304be291217211e1fa
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1229
-
 create_clone
 file
 
@@ -162,14 +128,14 @@ lars
 
 1198
 
-default_method
+create_ob
 file
 
 
 
 
-2011-05-29T15:32:33.332210Z
-adbd67bdf7d860ee35b6fb2353db52c0
+2011-05-29T15:32:33.316191Z
+3afcc8b0751299304be291217211e1fa
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -194,41 +160,7 @@ lars
 
 
 
-1530
-
-clone_uids
-file
-
-
-
-
-2011-05-29T15:32:33.332210Z
-58447a0a288b1aa938defb782c901984
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1212
+1229
 
 telnet_neg
 file
@@ -264,14 +196,14 @@ lars
 
 2302
 
-modify_command
+clone_uids
 file
 
 
 
 
 2011-05-29T15:32:33.332210Z
-1edf0b8bf389bcd6a798bdc7ea50a2c0
+58447a0a288b1aa938defb782c901984
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -296,7 +228,41 @@ lars
 
 
 
-2440
+1212
+
+default_method
+file
+
+
+
+
+2011-05-29T15:32:33.332210Z
+adbd67bdf7d860ee35b6fb2353db52c0
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1530
 
 default_prompt
 file
@@ -331,6 +297,40 @@ lars
 
 
 635
+
+modify_command
+file
+
+
+
+
+2011-05-29T15:32:33.332210Z
+1edf0b8bf389bcd6a798bdc7ea50a2c0
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2440
 
 clean_up
 file
@@ -434,40 +434,6 @@ lars
 
 1455
 
-move_object
-file
-
-
-
-
-2011-05-29T15:32:33.332210Z
-be8cc3aaa20d0190281d644e9d7c393f
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-841
-
 erq_stop
 file
 
@@ -501,6 +467,40 @@ lars
 
 
 430
+
+move_object
+file
+
+
+
+
+2011-05-29T15:32:33.332210Z
+be8cc3aaa20d0190281d644e9d7c393f
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+841
 
 print_prompt
 file

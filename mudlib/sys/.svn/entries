@@ -1,7 +1,7 @@
 10
 
 dir
-3020
+3022
 svn://svn.bearnip.com/ldmud/trunk/mudlib/sys
 svn://svn.bearnip.com/ldmud
 
@@ -60,40 +60,6 @@ lars
 
 210
 
-debug_message.h
-file
-
-
-
-
-2011-05-29T15:33:40.359679Z
-5fd0c426362b891b9683c9a551fbf72a
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-552
-
 regexp.h
 file
 
@@ -128,14 +94,14 @@ lars
 
 1173
 
-comm.h
+debug_message.h
 file
 
 
 
 
 2011-05-29T15:33:40.359679Z
-359ae458eedf974620f03d7f5b0e1ade
+5fd0c426362b891b9683c9a551fbf72a
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -160,7 +126,7 @@ lars
 
 
 
-375
+552
 
 telnet.h
 file
@@ -196,6 +162,40 @@ gnomi
 
 11537
 
+comm.h
+file
+
+
+
+
+2011-05-29T15:33:40.359679Z
+359ae458eedf974620f03d7f5b0e1ade
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+375
+
 inherit_list.h
 file
 
@@ -229,40 +229,6 @@ lars
 
 
 240
-
-time.h
-file
-
-
-
-
-2011-05-29T15:33:40.359679Z
-00c11fa826ef380ae9c04cd7c7f7e795
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-634
 
 trace.h
 file
@@ -298,6 +264,40 @@ lars
 
 670
 
+time.h
+file
+
+
+
+
+2011-05-29T15:33:40.359679Z
+00c11fa826ef380ae9c04cd7c7f7e795
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+634
+
 struct_info.h
 file
 
@@ -331,40 +331,6 @@ lars
 
 
 749
-
-signals.h
-file
-
-
-
-
-2011-05-29T15:33:40.359679Z
-9e9863d23888e3394c08eebfb57c0caa
-2010-02-19T20:12:21.029762Z
-2879
-zesstra
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-706
 
 xml.h
 file
@@ -400,14 +366,48 @@ gnomi
 
 313
 
-input_to.h
+signals.h
+file
+
+
+
+
+2011-05-29T15:33:40.359679Z
+9e9863d23888e3394c08eebfb57c0caa
+2010-02-19T20:12:21.029762Z
+2879
+zesstra
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+706
+
+commands.h
 file
 
 
 
 
 2011-05-29T15:33:40.375700Z
-3903275df2d779a4627d5129e0fd8bc2
+e21f8f392e687d7f2bc64f70d9fc1eb4
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -432,7 +432,7 @@ lars
 
 
 
-715
+1320
 
 debug_info.h
 file
@@ -468,14 +468,14 @@ zesstra
 
 7771
 
-commands.h
+input_to.h
 file
 
 
 
 
 2011-05-29T15:33:40.375700Z
-e21f8f392e687d7f2bc64f70d9fc1eb4
+3903275df2d779a4627d5129e0fd8bc2
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -500,7 +500,7 @@ lars
 
 
 
-1320
+715
 
 tls.h
 file

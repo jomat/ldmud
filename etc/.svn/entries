@@ -1,7 +1,7 @@
 10
 
 dir
-3020
+3022
 svn://svn.bearnip.com/ldmud/trunk/etc
 svn://svn.bearnip.com/ldmud
 
@@ -196,40 +196,6 @@ has-props
 
 3579
 
-ldmud-32x32.ico
-file
-
-
-
-
-2011-05-29T15:33:37.999701Z
-517406f1cb676a4c806df289d8611672
-2005-06-21T01:46:13.834700Z
-4
-lars
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2494
-
 README
 file
 
@@ -263,6 +229,40 @@ lars
 
 
 1179
+
+ldmud-32x32.ico
+file
+
+
+
+
+2011-05-29T15:33:37.999701Z
+517406f1cb676a4c806df289d8611672
+2005-06-21T01:46:13.834700Z
+4
+lars
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2494
 
 ldmud-16x16.ico
 file
@@ -434,40 +434,6 @@ lars
 
 1577
 
-startmud.pl
-file
-
-
-
-
-2011-05-29T15:33:37.999701Z
-5c67a61df6215cf1a736a9bf84af5297
-2005-06-21T01:46:13.834700Z
-4
-lars
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-956
-
 lpc.xml
 file
 
@@ -501,6 +467,40 @@ lars
 
 
 6753
+
+startmud.pl
+file
+
+
+
+
+2011-05-29T15:33:37.999701Z
+5c67a61df6215cf1a736a9bf84af5297
+2005-06-21T01:46:13.834700Z
+4
+lars
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+956
 
 icon-16x16.xpm
 file

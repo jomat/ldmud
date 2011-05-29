@@ -1,7 +1,7 @@
 10
 
 dir
-3020
+3022
 svn://svn.bearnip.com/ldmud/trunk/doc/master
 svn://svn.bearnip.com/ldmud
 
@@ -536,14 +536,14 @@ lars
 
 1140
 
-get_wiz_name
+runtime_warning
 file
 
 
 
 
 2011-05-29T15:32:19.516684Z
-2fb746f4bab37ca01a8422c49a1286ce
+d371f2e374059ada0ad264bc9f1758df
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -568,7 +568,7 @@ lars
 
 
 
-375
+1021
 
 query_allow_shadow
 file
@@ -604,14 +604,14 @@ lars
 
 462
 
-runtime_warning
+get_wiz_name
 file
 
 
 
 
 2011-05-29T15:32:19.516684Z
-d371f2e374059ada0ad264bc9f1758df
+2fb746f4bab37ca01a8422c49a1286ce
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -636,7 +636,7 @@ lars
 
 
 
-1021
+375
 
 remove_player
 file
@@ -672,40 +672,6 @@ lars
 
 487
 
-prepare_destruct
-file
-
-
-
-
-2011-05-29T15:32:19.516684Z
-ebce5fac2fc1e606feef5e498972ae55
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1339
-
 quota_demon
 file
 
@@ -739,6 +705,40 @@ lars
 
 
 657
+
+prepare_destruct
+file
+
+
+
+
+2011-05-29T15:32:19.516684Z
+ebce5fac2fc1e606feef5e498972ae55
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1339
 
 valid_snoop
 file
@@ -774,40 +774,6 @@ lars
 
 199
 
-epilog
-file
-
-
-
-
-2011-05-29T15:32:19.516684Z
-dc9bdcbc983f7f5849dd70a7fb0bac8c
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-610
-
 stale_erq
 file
 
@@ -841,6 +807,40 @@ lars
 
 
 472
+
+epilog
+file
+
+
+
+
+2011-05-29T15:32:19.516684Z
+dc9bdcbc983f7f5849dd70a7fb0bac8c
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+610
 
 valid_seteuid
 file

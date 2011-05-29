@@ -1,7 +1,7 @@
 10
 
 dir
-3020
+3022
 svn://svn.bearnip.com/ldmud/trunk/mud/lp-245/doc/lfun
 svn://svn.bearnip.com/ldmud
 
@@ -604,14 +604,14 @@ lars
 
 117
 
-short
+add_weight
 file
 
 
 
 
 2011-05-29T15:32:41.912686Z
-f1746b49702d6c6bc4163316c7f02547
+d2c31dd5562af6e725d507e38b289996
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -636,7 +636,7 @@ lars
 
 
 
-180
+310
 
 long
 file
@@ -672,14 +672,14 @@ lars
 
 613
 
-add_weight
+short
 file
 
 
 
 
 2011-05-29T15:32:41.912686Z
-d2c31dd5562af6e725d507e38b289996
+f1746b49702d6c6bc4163316c7f02547
 2005-06-21T01:46:13.834700Z
 4
 lars
@@ -704,7 +704,7 @@ lars
 
 
 
-310
+180
 
 hit_player
 file
@@ -1012,40 +1012,6 @@ lars
 
 153
 
-query_weight
-file
-
-
-
-
-2011-05-29T15:32:41.912686Z
-1c54e0af139bbd0ee21ba87f005293e5
-2005-06-21T01:46:13.834700Z
-4
-lars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-329
-
 query_money
 file
 
@@ -1079,4 +1045,38 @@ lars
 
 
 113
+
+query_weight
+file
+
+
+
+
+2011-05-29T15:32:41.912686Z
+1c54e0af139bbd0ee21ba87f005293e5
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+329
 

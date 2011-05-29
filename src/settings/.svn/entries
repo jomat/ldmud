@@ -1,7 +1,7 @@
 10
 
 dir
-3020
+3022
 svn://svn.bearnip.com/ldmud/trunk/src/settings
 svn://svn.bearnip.com/ldmud
 
@@ -468,6 +468,40 @@ has-props
 
 1671
 
+silberland
+file
+
+
+
+
+2011-05-29T15:33:03.228685Z
+f8e13dd415e622d2aad4311f06978022
+2009-02-28T22:12:42.356074Z
+2523
+zesstra
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+720
+
 beutelland
 file
 
@@ -536,16 +570,16 @@ has-props
 
 614
 
-silberland
+dragonfire
 file
 
 
 
 
 2011-05-29T15:33:03.228685Z
-f8e13dd415e622d2aad4311f06978022
-2009-02-28T22:12:42.356074Z
-2523
+ce2c9f087c3707f9415217458a9063cf
+2009-09-20T09:29:02.416774Z
+2746
 zesstra
 has-props
 
@@ -568,41 +602,7 @@ has-props
 
 
 
-720
-
-pkmud
-file
-
-
-
-
-2011-05-29T15:33:03.228685Z
-86e33e2e12725ae8efcbf5158740595b
-2009-02-28T22:12:42.356074Z
-2523
-zesstra
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-961
+1369
 
 avalon
 file
@@ -638,16 +638,16 @@ zesstra
 
 1267
 
-dragonfire
+pkmud
 file
 
 
 
 
 2011-05-29T15:33:03.228685Z
-ce2c9f087c3707f9415217458a9063cf
-2009-09-20T09:29:02.416774Z
-2746
+86e33e2e12725ae8efcbf5158740595b
+2009-02-28T22:12:42.356074Z
+2523
 zesstra
 has-props
 
@@ -670,41 +670,7 @@ has-props
 
 
 
-1369
-
-osb
-file
-
-
-
-
-2011-05-29T15:33:03.912175Z
-86047bc173ec8662651b927de0f13c89
-2005-06-21T01:46:13.834700Z
-4
-lars
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-644
+961
 
 compat
 file
@@ -740,6 +706,40 @@ has-props
 
 319
 
+osb
+file
+
+
+
+
+2011-05-29T15:33:03.912175Z
+86047bc173ec8662651b927de0f13c89
+2005-06-21T01:46:13.834700Z
+4
+lars
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+644
+
 default
 file
 
@@ -773,40 +773,6 @@ has-props
 
 
 20226
-
-traumland
-file
-
-
-
-
-2011-05-29T15:33:03.912175Z
-c6d968cbc9f76d764dae6c1fdf000ae9
-2009-02-28T22:12:42.356074Z
-2523
-zesstra
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2300
 
 carledon
 file
@@ -842,17 +808,18 @@ has-props
 
 690
 
-timewarp
+traumland
 file
 
 
 
 
 2011-05-29T15:33:03.912175Z
-62546da7b137b1bf43b789d2c227eefb
-2005-06-21T01:46:13.834700Z
-4
-lars
+c6d968cbc9f76d764dae6c1fdf000ae9
+2009-02-28T22:12:42.356074Z
+2523
+zesstra
+has-props
 
 
 
@@ -873,8 +840,7 @@ lars
 
 
 
-
-1078
+2300
 
 unitopia
 file
@@ -909,6 +875,40 @@ has-props
 
 
 2029
+
+timewarp
+file
+
+
+
+
+2011-05-29T15:33:03.912175Z
+62546da7b137b1bf43b789d2c227eefb
+2005-06-21T01:46:13.834700Z
+4
+lars
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1078
 
 morgengrauen
 file
@@ -1012,40 +1012,6 @@ lars
 
 1910
 
-tubmud
-file
-
-
-
-
-2011-05-29T15:33:03.912175Z
-024181f31e0d7560ee92437f03be4dfd
-2011-03-28T19:49:51.251815Z
-3018
-zesstra
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1791
-
 hyperborea
 file
 
@@ -1079,6 +1045,40 @@ has-props
 
 
 429
+
+tubmud
+file
+
+
+
+
+2011-05-29T15:33:03.912175Z
+024181f31e0d7560ee92437f03be4dfd
+2011-03-28T19:49:51.251815Z
+3018
+zesstra
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1791
 
 finalfrontier
 file
