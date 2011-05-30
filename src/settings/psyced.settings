@@ -25,7 +25,7 @@
 # configure will strip this part from the script.
 
 cp $0 settings/psyced-current
-exec ./configure --prefix=/opt/psyced --bindir=/opt/psyced/bin-linux --libdir=/opt/psyced/world --libexec=/opt/psyced/run --with-setting=psyced-current $*
+exec ./configure --enable-use-psyc --prefix=/opt/psyced --bindir=/opt/psyced/bin-linux --libdir=/opt/psyced/world --libexec=/opt/psyced/run --with-setting=psyced-current $*
 exit
 
 #-- PSYCLPC EXTENSIONS
