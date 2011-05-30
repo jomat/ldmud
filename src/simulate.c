@@ -58,6 +58,9 @@
 #ifdef USE_SQLITE
 #include "pkg-sqlite.h"
 #endif
+#ifdef HAS_PSYC
+#include "pkg-psyc.h"
+#endif
 #include "prolang.h"
 #include "sent.h"
 #include "simul_efun.h"
@@ -2623,6 +2626,11 @@ destruct (object_t *ob)
 
         shadow_sent = O_GET_SHADOW(ob);
 
+#ifdef HAS_PSYC
+        if (shadow_sent->psyc_state)
+            psyc_free_state(shadow_sent->psyc_state);
+#endif
+
         /* The chain of shadows is a double linked list. Take care to update
          * it correctly.
          */
@@ -3066,6 +3074,9 @@ new_shadow_sent(void)
     p->sent.type = SENT_SHADOW;
     p->shadowing = NULL;
     p->shadowed_by = NULL;
+#ifdef HAS_PSYC
+    p->psyc_state = NULL;
+#endif
     p->ip = NULL;
     return p;
 } /* new_shadow_sent() */
@@ -3104,6 +3115,9 @@ check_shadow_sent (object_t *ob)
         sh = O_GET_SHADOW(ob);
 
         if (!sh->ip
+#ifdef HAS_PSYC
+         && !sh->psyc_state
+#endif
          && !sh->shadowing
          && !sh->shadowed_by
            )

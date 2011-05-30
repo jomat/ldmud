@@ -529,6 +529,11 @@ backend (void)
          * is the max size of the network receive buffer. IOW: no
          * buffer overruns are possible.
          */
+    size_t len; 
+        /* len is fippos new variable to
+         * handle binary data. Cheers to fippo.
+         */
+
     Bool prevent_object_cleanup;
         /* Implement a low/high water mark handling for the call to
          * cleanup_all_objects(), as it turns out that a single
@@ -745,7 +750,8 @@ backend (void)
          * heart beat is due.
          */
 
-        if (get_message(buff))
+        len = 0;
+        if (get_message(buff, &len))
         {
             interactive_t *ip;
 
@@ -792,7 +798,7 @@ backend (void)
              && buff[1] != '\0'
                )
             {
-                if(!call_function_interactive(ip, buff)) {
+                if(!call_function_interactive(ip, buff, len)) {
                     /* We got a bang-input, but no input context wants
                     * to handle it - treat it as a normal command.
                     */
@@ -807,7 +813,7 @@ backend (void)
                     execute_command(buff+1, command_giver);
                 }
             }
-            else if (call_function_interactive(ip, buff))
+            else if (call_function_interactive(ip, buff, len))
                 NOOP;
             else
                 execute_command(buff, command_giver);

@@ -199,6 +199,8 @@ struct interactive_s {
 
     CBool closing;              /* True when closing this socket. */
     CBool tn_enabled;           /* True: telnet machine enabled */
+    CBool is_binary;            /* True: socket reads binary */
+    CBool connected;            /* Set to true after first bytes arrived */
     char do_close;              /* Bitflags: Close this down; Proto-ERQ. */
     char noecho;                /* Input mode bitflags */
 
@@ -293,6 +295,9 @@ struct interactive_s {
 #     define TLS_INACTIVE     0  /* Session is not secure */
 #     define TLS_HANDSHAKING  1  /* TLS is being negotiated */
 #     define TLS_ACTIVE       2  /* Session is secure */
+# ifdef HAS_PSYC
+    int                    tls_autodetect;
+# endif
     callback_t            *tls_cb;
 #endif
 };
@@ -406,11 +411,11 @@ extern void  ipc_remove(void);
 extern Bool comm_socket_write (char *msg, size_t size, interactive_t *ip, uint32 flags);
 extern void  add_message VARPROT((const char *, ...), printf, 1, 2);
 extern void  flush_all_player_mess(void);
-extern Bool get_message(char *buff);
+extern Bool get_message(char *buff, size_t *len);
 extern void remove_interactive(object_t *ob, Bool force);
 extern void set_noecho(interactive_t *i, char noecho, Bool local_change, Bool external);
 extern int  find_no_bang (interactive_t *ip);
-extern Bool call_function_interactive(interactive_t *i, char *str);
+extern Bool call_function_interactive(interactive_t *i, char *str, size_t len);
 extern void remove_all_players(void);
 extern void  print_prompt(void);
 extern void  init_telopts(void);

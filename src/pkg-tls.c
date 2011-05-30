@@ -75,23 +75,73 @@ tls_continue_handshake (interactive_t *ip)
  */
 
 {
-    int ret;
+    int ret=0;
 
     if (ip->tls_status != TLS_HANDSHAKING)
         return 1;
+#if 0
+# ifdef HAS_PSYC
+    /* detect non-tls data on a tls connection
+     * heuristic taken from jabberds jadc2s
+     */
+    if (ip->tls_autodetect) {
+        char peek_buf = 0x44;
 
-    ret = tls_do_handshake(ip);
-    if (!ret)
-	return 0;
+        if (recv(ip->socket, &peek_buf, 1, MSG_PEEK) < 1) {
+             /* peek failure: this part of code is run each 
+                second until any character has appeared on the
+                socket. until now a non-tls connect to an autodetect
+                socket could cause a crash, or at least a runtime
+                openssl error. here's the fix. even better:
+                this implements a countdown. if after a certain
+                number of seconds no SSL/TLS has shown up on the
+                socket we pass 0x44 to the switch below which
+                deallocates the tls session and goes for plaintext. --lynX
+             */
+#  ifdef DEBUG
+            debug_message("TLS autodetect %d: could not peek from socket\n",
+                ip->tls_autodetect);
+#  endif
+            if (--ip->tls_autodetect) return 0;
+        }
+#  ifdef DEBUG
+        debug_message("TLS autodetect called off. ret = %d, peek byte is %x\n",
+            ret, (int)peek_buf);
+#  endif
+        /* disable autodetect on established plaintext connections */
+        ip->tls_autodetect = 0;
 
-
-    if (ret < 0)
-    {
-        ip->tls_status = TLS_INACTIVE;
+        switch(peek_buf & 0xff) {
+        case 0x16: /* TLSv1 most likely */
+        case 0x80: /* SSLv2 most likely */
+        case 0x00: /* SSLv2 most likely */
+            break;
+        case 0x44: /* special marker for autodetect timeout */
+        default:
+            SSL_free(ip->tls_session);
+            ip->tls_session = NULL;
+            ip->tls_status = TLS_INACTIVE;
+            ret = ERR_TLS_NOT_DETECTED;
+            break;
+        }
     }
-    else
-    {
-        ip->tls_status = TLS_ACTIVE;
+# endif
+#endif
+
+    if (ERR_TLS_NOT_DETECTED!=ret) {
+        ret = tls_do_handshake(ip);
+        if (!ret)
+	    return 0;
+
+
+        if (ret < 0)
+        {
+            ip->tls_status = TLS_INACTIVE;
+        }
+        else
+        {
+            ip->tls_status = TLS_ACTIVE;
+        }
     }
 
     /* If the connection is no longer in handshake, execute the callback */
@@ -386,7 +436,14 @@ f_tls_error(svalue_t *sp)
     const char *text;
     int err = sp->u.number;
 
-    text = tls_error(err);
+#ifdef HAS_PSYC
+    if (err == ERR_TLS_NOT_DETECTED)
+        text = "Unencrypted connection detected";
+    else
+#endif
+    {
+        text = tls_error(err);
+    }
 
     if (text)
     {

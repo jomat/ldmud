@@ -42,6 +42,10 @@
 #include "driver.h"
 #include "typedefs.h"
 
+#ifdef HAS_PSYC
+# include "pkg-psyc.h"
+#endif
+
 enum sent_type_e {
     SENT_PLAIN = 0     /* Normal action */
  ,  SENT_SHORT_VERB    /* Action with abbreviatable verb */
@@ -83,12 +87,16 @@ struct shadow_s
     object_t *shadowed_by;   /* "next": the shadowing object */
 
     interactive_t *ip;       /* the information for interactive objects */
+#ifdef HAS_PSYC
+    psyc_state_t *psyc_state;   /* in case this objects parses PSYC data */
+#endif
 };
 
 /* --- Macros --- */
 
 #define O_GET_SHADOW(ob)      ((shadow_t *)(ob)->sent)
 #define O_GET_INTERACTIVE(ob) (O_GET_SHADOW(ob)->ip)
+#define O_GET_PSYC_STATE(ob)  (O_GET_SHADOW(ob)->psyc_state)
 
   /* Expand to an expression suitable to query or set the
    * indicated attribute. No checks are performed.

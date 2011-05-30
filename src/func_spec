@@ -544,6 +544,7 @@ mixed   set_prompt(string|closure|int, object default: F_THIS_PLAYER);
 int     get_max_commands(object default: F_THIS_INTERACTIVE);
 void    set_max_commands(int, object default: F_THIS_INTERACTIVE);
 int     enable_telnet(int, object default: F_THIS_INTERACTIVE);
+int     enable_binary(object default: F_THIS_INTERACTIVE);
 
 void    write(mixed);
 object *users();
@@ -552,6 +553,11 @@ object *users();
 int     attach_erq_demon(object|string, int default: F_CONST0);
 int     send_erq(int, int*|string, null|closure default: F_CONST0);
 #endif
+
+#ifdef HAS_PSYC
+int     psyc_parse(int* | string);
+string  psyc_render(mixed*);
+#endif /* HAS_PSYC */
 
 
         /* Files */

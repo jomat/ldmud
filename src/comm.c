@@ -2159,7 +2159,7 @@ clear_message_buf (interactive_t *ip)
 
 /*-------------------------------------------------------------------------*/
 Bool
-get_message (char *buff)
+get_message (char *buff, size_t *len)
 
 /* Get a message from a user, or wait until it is time for the next
  * heartbeat/callout. You can tell this apart by the result:
@@ -2841,6 +2841,38 @@ get_message (char *buff)
                 inet_packets_in++;
                 inet_volume_in += l;
 #endif
+
+#ifdef HAS_PSYC
+                // If we're receiving the first bytes call a peek function which
+                // could enable_binary depending on the content of the buffer
+                // We only need this until we give up the old PSYC syntax.
+                if (ip && check_object(ip->ob) && !ip->connected) {
+                    put_c_n_string(++inter_sp, ip->text, l);
+                    // we shouldn't look up the string in the string table
+                    // for each connection.. but it's just temporary code
+                    sapply(new_tabled("connection_peek"), ip->ob, 1);
+                    ip->connected = MY_TRUE;
+                }
+#endif
+                /* Experimental support for
+                 * binary data streams, by fippo 2008
+                 */
+                if (ip->is_binary) {
+                     /* webdav attack caused something near memcpy to crash..
+                      * buff isn't larger than ip->text but
+                      * maybe l is larger than buff?
+                      */
+                    if (l > MAX_TEXT) {
+                        debug_message("%s Incoming socket overflow. Dropped %d bytes.\n"
+                            , time_stamp(), l);
+                    } else {
+                        memcpy(buff, ip->text, l);
+                        *len = (size_t) l;
+                    }    
+                    FD_CLR(ip->socket, &readfds);
+                    command_giver = ip->ob;
+                    return MY_TRUE;
+                } 
 
                 ip->text_end += l;
 
@@ -3594,12 +3626,21 @@ new_player ( object_t *ob, SOCKET_T new_socket
     new_interactive->tls_status = TLS_INACTIVE;
     new_interactive->tls_session = NULL;
     new_interactive->tls_cb = NULL;
+# ifdef HAS_PSYC
+         /* give TLS 4 seconds to start. in fact even 1 second should
+          * be enough as the TLS init packet is sent immediately with
+          * the TCP 3-way handshake completion.
+          */
+    new_interactive->tls_autodetect = ob == NULL? 4 : 0;
+# endif
 #endif
     new_interactive->input_handler = NULL;
     put_number(&new_interactive->prompt, 0);
     new_interactive->modify_command = NULL;
     new_interactive->closing = MY_FALSE;
     new_interactive->tn_enabled = MY_TRUE;
+    new_interactive->is_binary = MY_FALSE;
+    new_interactive->connected = MY_FALSE;
     new_interactive->do_close = 0;
     new_interactive->noecho = 0;
     new_interactive->supress_go_ahead = MY_FALSE;
@@ -3954,7 +3995,7 @@ find_no_bang (interactive_t *ip)
 
 /*-------------------------------------------------------------------------*/
 static Bool
-call_input_to (interactive_t *i, char *str, input_to_t *it)
+call_input_to (interactive_t *i, char *str, input_to_t *it, size_t len)
 
 /* Call the input_to handler <it> for this user <i> and the input <str>.
  * Return TRUE if this handler was executed successfully, and FALSE
@@ -4016,7 +4057,15 @@ call_input_to (interactive_t *i, char *str, input_to_t *it)
 
     /* Call the input_to() function with the newly input string */
 
+#ifdef HAS_PSYC // enable_binary i suppose
+    if (len == 0) {
+        push_c_string(inter_sp, str);
+    } else {
+        push_c_n_string(inter_sp, str, len);
+    }
+#else
     push_c_string(inter_sp, str);
+#endif
     (void)backend_callback(&(current_it.fun), 1);
 
     rt_context = error_recovery_info.rt.last;
@@ -4027,7 +4076,7 @@ call_input_to (interactive_t *i, char *str, input_to_t *it)
 
 /*-------------------------------------------------------------------------*/
 Bool
-call_function_interactive (interactive_t *i, char *str)
+call_function_interactive (interactive_t *i, char *str, size_t len)
 
 /* Execute a pending input handler for this user <i> and the input <str>
  * Return TRUE if an input_to() or ed() was pending and executed, and FALSE
@@ -4102,7 +4151,7 @@ call_function_interactive (interactive_t *i, char *str)
                 i->noecho |= NOECHO_STALE;
             }
 
-            res = call_input_to(i, str, (input_to_t*) ih);
+            res = call_input_to(i, str, (input_to_t*) ih, len);
 
             /* If NOECHO is no longer needed, turn it off. */
 
@@ -8741,6 +8790,42 @@ f_enable_telnet (svalue_t *sp)
     put_number(sp, rc);
     return sp;
 } /* f_enable_telnet() */
+
+/*-------------------------------------------------------------------------*/
+svalue_t *
+f_enable_binary (svalue_t *sp) 
+
+/* TEFUN: enable_binary()
+ *
+ *   int enable_binary (object obj)
+ *
+ * enable binary socket read for obj. Only do this if you know 
+ * what you're doing. fippo 2008.
+ */
+
+{
+    p_int rc;
+    interactive_t *ip; 
+
+    if (!O_SET_INTERACTIVE(ip, sp->u.ob))
+    {    
+        errorf("Bad arg 1 to enable_binary(): Object '%s' is not interactive.\n"
+             , get_txt(sp->u.ob->name)
+             );   
+        /* NOTREACHED */
+        return sp; /* flow control hint */
+    }    
+
+    rc = (ip->is_binary != MY_FALSE);
+    //if (privilege_violation4(STR_ENABLE_TELNET, sp->u.ob, NULL, 1, sp))
+    ip->is_binary = MY_TRUE;
+
+    free_svalue(sp);
+
+    put_number(sp, rc); 
+    return sp;
+} /* f_enable_binary() */
+
  
 /*-------------------------------------------------------------------------*/
 void
