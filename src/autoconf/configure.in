@@ -217,6 +217,7 @@ AC_MY_ARG_ENABLE(filename-spaces,no,,[Allow space characters in filenames])
 AC_MY_ARG_ENABLE(share-variables,no,,[Enable clone initialization from blueprint variable values])
 AC_MY_ARG_ENABLE(use-ipv6,no,,[Enables support for IPv6])
 AC_MY_ARG_ENABLE(use-alists,no,,[Enables alist support])
+AC_MY_ARG_ENABLE(use-psyc,no,,[Enables libpsyc support])
 AC_MY_ARG_ENABLE(use-mccp,no,,[Enables MCCP support])
 AC_MY_ARG_ENABLE(use-mysql,no,,[Enables mySQL support])
 AC_MY_ARG_ENABLE(use-pgsql,no,,[Enables PostgreSQL support])
@@ -416,6 +417,20 @@ else
   cdef_use_sqlite="#define"
   sqlite_path="$enable_use_sqlite"
   enable_use_sqlite="yes"
+fi
+
+AC_UPDATE_VAR(enable_use_psyc)
+if test "x$enable_use_psyc" = "x" || test "x$enable_use_psyc" = "xyes"; then 
+  cdef_use_psyc="#define"
+  psyc_path=
+  enable_use_psyc="yes"
+elif test "x$enable_use_psyc" = "xno"; then 
+  cdef_use_psyc="#undef"
+  psyc_path=
+else
+  cdef_use_psyc="#define"
+  psyc_path="$enable_use_psyc"
+  enable_use_psyc="yes"
 fi
 
 AC_UPDATE_VAR(enable_use_xml)
@@ -1217,6 +1232,38 @@ if test "$tls_package" != "ssl"; then
 else
   cdef_use_gcrypt="#undef"
   enable_use_gcrypt=no
+fi
+
+# --- libpsyc ---
+
+echo "*** libpsyc"
+
+lp_cv_has_psyc_lib="no"
+AC_CHECK_LIB(psyc,main, lp_cv_has_psyc_lib="yes")
+
+if test $lp_cv_has_psyc_lib = yes; then
+    LIBS="-lpsyc"
+    AC_CACHE_CHECK(for libpsyc usability,lp_cv_has_psyc,
+        AC_TRY_RUN([
+#include <psyc.h>
+
+int main(void) {
+    (void) psyc_version();
+    return 0;
+}
+            ],
+            lp_cv_has_psyc=yes,
+            lp_cv_has_psyc=no
+        ))
+    CFLAGS="$saveflags"
+
+    if test $lp_cv_has_psyc = yes; then
+        AC_DEFINE(HAS_PSYC, 1, [Does the machine offer libpsyc?])
+        PKGLIBS="$PKGLIBS -lpsyc"
+        echo "Congrats! libpsyc is available on this system."
+    else
+        echo "libpsyc not available on this system yet."
+    fi
 fi
 
 # --- PCRE ---
