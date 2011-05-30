@@ -23,3 +23,6 @@ src/stdstrings.h
 src/util/erq/erq
 src/util/indent/indent
 src/y.output
+*.m4
+*.cache
+*.bck
