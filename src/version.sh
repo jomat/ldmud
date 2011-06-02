@@ -17,7 +17,7 @@ version_longtype="development"
 # A timestamp, to be used by bumpversion and other scripts.
 # It can be used, for example, to 'touch' this file on every build, thus
 # forcing revision control systems to add it on every checkin automatically.
-version_stamp="Mon May 30 15:23:46 UTC 2011"
+version_stamp="Thu Jun  2 15:22:27 UTC 2011"
 
 # The version number information
 version_micro=0
