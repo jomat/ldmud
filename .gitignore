@@ -16,8 +16,6 @@ src/ldmud
 src/make_func.c
 src/mkfunc
 src/patchlevel.h
-src/pkg-psyc.c
-src/pkg-psyc.h
 src/stdstrings.c
 src/stdstrings.h
 src/util/erq/erq
