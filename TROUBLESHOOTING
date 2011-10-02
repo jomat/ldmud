@@ -1,6 +1,19 @@
 Some things that might provide quick fixes (at least under debian):
 
-If you want to enable pgsql:
+yacc:
+sudo apt-get install bison
+
+libpsyc
+git clone git://github.com/psyc/libpsyc.git
+make
+make install
+
+SSL:
+sudo apt-get install libssl-dev
+(thx@debian for great naming of the OpenSSL libs…)
+
+pgsql:
+apt-get install libpq-dev
 sudo ln -s /usr/include/postgresql /usr/include/pgsql
 
 Iconv trouble:
@@ -11,3 +24,6 @@ not wrong: LIBS=-lpsyc -lidn  -lssl -lcrypto -lpsyc -lpcre -lm -L/lib -lpq -lsql
 libpsyc trouble:
 In src/Makefile line 98 following:
 add pkg-psyc.c to SRC and pkg-psyc.o to OBJ
+
+SQLite:
+apt-get install libsqlite3-dev
