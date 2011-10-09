@@ -85,7 +85,7 @@ MPATH=-DMUD_LIB='"$(MUD_LIB)"' -DBINDIR='"$(BINDIR)"' -DERQ_DIR='"$(ERQ_DIR)"'
 #
 CFLAGS= @EXTRA_CFLAGS@ $(OPTIMIZE) $(DEBUG) $(WARN) $(MPATH) $(PROFIL)
 #
-LIBS=@LIBS@ @PKGLIBS@
+LIBS=@LIBS@ @PKGLIBS@ -lm
 #
 LDFLAGS=$(PROFIL) @LDFLAGS@
 #
@@ -102,7 +102,7 @@ SRC = access_check.c actions.c array.c arraylist.c backend.c bitstrings.c \
       lex.c main.c mapping.c md5.c mempools.c mregex.c mstrings.c object.c \
       otable.c\
       parser.c parse.c pkg-alists.c pkg-iksemel.c pkg-xml2.c pkg-idna.c \
-      pkg-mccp.c pkg-mysql.c pkg-gcrypt.c \
+      pkg-mccp.c pkg-mysql.c pkg-gcrypt.c pkg-psyc.c \
       pkg-pgsql.c pkg-sqlite.c pkg-tls.c pkg-openssl.c pkg-gnutls.c \
       port.c ptrtable.c \
       random.c regexp.c sha1.c simulate.c simul_efun.c stdstrings.c \
@@ -114,7 +114,7 @@ OBJ = access_check.o actions.o array.o arraylist.o backend.o bitstrings.o \
       lex.o main.o mapping.o md5.o mempools.o mregex.o mstrings.o object.o \
       otable.o \
       parser.o parse.o pkg-alists.o pkg-iksemel.o pkg-xml2.o pkg-idna.o \
-      pkg-mccp.o pkg-mysql.o pkg-gcrypt.o \
+      pkg-mccp.o pkg-mysql.o pkg-gcrypt.o pkg-psyc.o \
       pkg-pgsql.o pkg-sqlite.o pkg-tls.o pkg-openssl.o pkg-gnutls.o \
       port.o ptrtable.o \
       random.o regexp.o sha1.o simulate.o simul_efun.o stdstrings.o \
