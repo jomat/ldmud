@@ -79,7 +79,6 @@ tls_continue_handshake (interactive_t *ip)
 
     if (ip->tls_status != TLS_HANDSHAKING)
         return 1;
-#if 0
 # ifdef HAS_PSYC
     /* detect non-tls data on a tls connection
      * heuristic taken from jabberds jadc2s
@@ -126,7 +125,6 @@ tls_continue_handshake (interactive_t *ip)
         }
     }
 # endif
-#endif
 
     if (ERR_TLS_NOT_DETECTED!=ret) {
         ret = tls_do_handshake(ip);
